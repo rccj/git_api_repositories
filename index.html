@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1>Github我看看</h1>
+    <input type="text" placeholder="請輸入Github使用者帳號" v-model="userName" @keyup.enter="updateRepos(userName)">
+    <input type="button" value="搜尋" @click="updateRepos(userName)">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Project Name</th>
+          <th>Latest commit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in repositories">
+          <td>
+            <a v-bind:href="item.html_url" target="_blank">{{item.name}}</a>
+          </td>
+          <td>
+            {{item.pushed_at}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="./all.js"></script>
+</body>
+
+</html>
