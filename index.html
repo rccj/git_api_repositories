@@ -10,10 +10,9 @@
 
 <body>
   <div id="app">
-    <h1>Github我看看</h1>
+    <h1>Github我看看:{{using}}</h1>
     <input type="text" placeholder="請輸入Github使用者帳號" v-model="userName" @keyup.enter="updateRepos(userName)">
     <input type="button" value="搜尋" @click="updateRepos(userName)">
-
     <table>
       <thead>
         <tr>

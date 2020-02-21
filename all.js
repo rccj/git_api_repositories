@@ -3,13 +3,15 @@ var app = new Vue({
   data: {
     userName: 'rccj',
     repositories: [],
+    using:'',
   },
-  // created: function () {
-  //   this.updateRepos(this.userName);
-  // },
+  created: function () {
+    this.updateRepos(this.userName);
+    this.textName()
+  },
   methods: {
     updateRepos: function (Input) {
-      let apiUrl = `https://api.github.com/users/${Input}/repos`;
+      let apiUrl = `https://api.github.com/users/${Input}/repos?sort=updated`;
       // console.log(apiUrl);
 
       let xhr = new XMLHttpRequest();
@@ -27,6 +29,10 @@ var app = new Vue({
         vm.userName = '';
         // console.log(JSON.parse(xhr.responseText))
       };
-    }
+    this.textName()
+    },
+     textName: function(){
+      this.using = this.userName;
+     }
   }
 });
